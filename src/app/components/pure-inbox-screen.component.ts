@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-pure-inbox-screen',
-  templateUrl: `
+  template: `
     <div *ngIf="_error" class="page lists-show">
       <div class="wrapper-message">
         <span class="icon-face-sad"></span>
