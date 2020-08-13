@@ -25,5 +25,5 @@ export class PureTaskListComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit(): void {}
 }
