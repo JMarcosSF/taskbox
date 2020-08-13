@@ -1,9 +1,11 @@
 // src/app/components/task.stories.ts
 import { action } from '@storybook/addon-actions';
 import { TaskComponent } from './task.component';
+import {object, withKnobs} from '@storybook/addon-knobs';
 export default {
   title: 'Task',
   excludeStories: /.*Data$/,
+  decorators: [withKnobs],
 };
 
 export const actionsData = {
@@ -20,7 +22,7 @@ export const taskData = {
 export const Default = () => ({
   component: TaskComponent,
   props: {
-    task: taskData,
+    task: object('task', { ...taskData }),
     onPinTask: actionsData.onPinTask,
     onArchiveTask: actionsData.onArchiveTask,
   },
@@ -44,6 +46,22 @@ export const Archived = () => ({
     task: {
       ...taskData,
       state: 'TASK_ARCHIVED',
+    },
+    onPinTask: actionsData.onPinTask,
+    onArchiveTask: actionsData.onArchiveTask,
+  },
+});
+
+const longTitle = `This task's name is absurdly large. In fact, I think if I keep going I might end up with content overflow. What will happen? The star that represents a pinned task could have text overlapping. The text could cut-off abruptly when it reaches the star. I hope not!`;
+
+// same as before
+
+export const LongTitle = () => ({
+  component: TaskComponent,
+  props: {
+    task: {
+      ...taskData,
+      title: longTitle,
     },
     onPinTask: actionsData.onPinTask,
     onArchiveTask: actionsData.onArchiveTask,

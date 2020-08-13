@@ -1037,7 +1037,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<div class=\"list-item {{ task?.state }}\">\n  <label class=\"checkbox\">\n    <input\n      type=\"checkbox\"\n      [defaultChecked]=\"task?.state === 'TASK_ARCHIVED'\"\n      disabled=\"true\"\n      name=\"checked\"\n    />\n    <span class=\"checkbox-custom\" (click)=\"onArchive(task.id)\"></span>\n  </label>\n  <div class=\"title\">\n    <input type=\"text\" [value]=\"task?.title\" readonly=\"true\" placeholder=\"Input title\" />\n  </div>\n  <div class=\"actions\">\n    <a *ngIf=\"task?.state !== 'TASK_ARCHIVED'\" (click)=\"onPin(task.id)\">\n      <span class=\"icon-star\"></span>\n    </a>\n  </div>\n</div>\n"
+            "templateData": "<div class=\"list-item {{ task?.state }}\">\n  <label class=\"checkbox\">\n    <input\n      type=\"checkbox\"\n      [defaultChecked]=\"task?.state === 'TASK_ARCHIVED'\"\n      disabled=\"true\"\n      name=\"checked\"\n    />\n    <span class=\"checkbox-custom\" (click)=\"onArchive(task.id)\"></span>\n  </label>\n  <div class=\"title\">\n    <input\n      type=\"text\"\n      [value]=\"task?.title\"\n      readonly=\"true\"\n      placeholder=\"Input title\"\n      [ngStyle]=\"{textOverflow: 'ellipsis'}\" ]\n    />\n  </div>\n  <div class=\"actions\">\n    <a *ngIf=\"task?.state !== 'TASK_ARCHIVED'\" (click)=\"onPin(task.id)\">\n      <span class=\"icon-star\"></span>\n    </a>\n  </div>\n</div>\n"
         },
         {
             "name": "TaskListComponent",
@@ -1347,7 +1347,7 @@
                 "subtype": "variable",
                 "file": "src/app/components/task.stories.ts",
                 "type": "",
-                "defaultValue": "() => ({\n  component: TaskComponent,\n  props: {\n    task: taskData,\n    onPinTask: actionsData.onPinTask,\n    onArchiveTask: actionsData.onArchiveTask,\n  },\n})"
+                "defaultValue": "() => ({\n  component: TaskComponent,\n  props: {\n    task: object('task', { ...taskData }),\n    onPinTask: actionsData.onPinTask,\n    onArchiveTask: actionsData.onArchiveTask,\n  },\n})"
             },
             {
                 "name": "defaultTasks",
@@ -1626,7 +1626,7 @@
                     "subtype": "variable",
                     "file": "src/app/components/task.stories.ts",
                     "type": "",
-                    "defaultValue": "() => ({\n  component: TaskComponent,\n  props: {\n    task: taskData,\n    onPinTask: actionsData.onPinTask,\n    onArchiveTask: actionsData.onArchiveTask,\n  },\n})"
+                    "defaultValue": "() => ({\n  component: TaskComponent,\n  props: {\n    task: object('task', { ...taskData }),\n    onPinTask: actionsData.onPinTask,\n    onArchiveTask: actionsData.onArchiveTask,\n  },\n})"
                 },
                 {
                     "name": "Pinned",
